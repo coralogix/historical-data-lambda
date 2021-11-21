@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  historical-data-migrator-lambda
+
+Globals:
+  Function:
+    Timeout: 900
+    MemorySize: 1024
+Resources:
+  IngestLogs:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: historical-data-migrator-lambda/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Role: <your lambda function execution arn string>
+      ReservedConcurrentExecutions: 50
+      Environment:
+        Variables:
+          CORALOGIX_KEY: <your coralogix token goes here>
+          APP_NAME: <your coralogx application name here>
+          SUBSYSTEM_NAME: <your coralogx subsystem name here>

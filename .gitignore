@@ -8,6 +8,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.aws-sam/
+samconfig.toml
 build/
 develop-eggs/
 dist/
@@ -109,6 +111,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 
 # Spyder project settings
 .spyderproject
